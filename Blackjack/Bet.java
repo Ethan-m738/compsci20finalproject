@@ -14,4 +14,8 @@ public class Bet {
     public void setAmount(int amount) {
         this.amount = amount;
     }
+
+    public void doubleAmount() {
+        amount *= 2;
+    }
 }

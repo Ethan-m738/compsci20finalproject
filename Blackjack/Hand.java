@@ -20,6 +20,10 @@ class Hand extends AbstractHand {
 
     public int aceCount;
 
+    public List<Card> getCards(){
+        return cards;
+    }
+
     public int score() {
         int value = 0;
         aceCount = 0;
@@ -68,5 +72,9 @@ class Hand extends AbstractHand {
 
     public int getAceCount(){
         return aceCount;
+    }
+
+    public void clear(){
+        cards.clear();
     }
 }

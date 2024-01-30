@@ -3,8 +3,14 @@ package Blackjack;
 public class House extends Hand implements Money {
 
     private Hand hand;
+    private Bet currentBet;
+    private Player player = new Player();
+    private int money;
+    private int currentPlayerBet;
+    private int startMoney = 10000;
 
     public House() {
+        initializeMoney();
         this.hand = new Hand();
     }
 
@@ -21,16 +27,45 @@ public class House extends Hand implements Money {
         return hand.score() < 17;
     }
 
-    public int getTotal(){
-        return 1;
+    public int getDealerBet(){
+        if (player.getBetAmount() == null) {
+            return 0;
+        }
+        else{
+            return player.getBetAmount().getAmount();
+        }
     }
 
-    public int totalAfterBet(){
-        return 1;
+    public void initializeMoney() {
+        money = startMoney;
+    }
+
+    public int getTotal(){
+        return money;
+    }
+
+    public int totalAfterBet(int ammount){
+        return money - ammount;
     }
 
     public int differenceFromStart(){
-        return 1;
+        return startMoney - money;
+    }
+
+    public void winBet() {
+        this.money += currentPlayerBet;
+    }
+
+    public void loseBet() {
+        this.money -= currentPlayerBet;
+    }
+
+    public void tie(){
+        
+    }
+
+    public void looseBlackJack(){
+        this.money -= (int)Math.ceil(currentPlayerBet * 1.5);
     }
     
 }

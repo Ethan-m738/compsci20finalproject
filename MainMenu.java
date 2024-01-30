@@ -38,7 +38,7 @@ public class MainMenu extends JFrame implements KeyListener {
 
         Runnable callExit = () -> exitConsole();
 
-        executor.execute(callExit);
+        //executor.execute(callExit);
 
         SwingUtilities.invokeLater(() -> new MainMenu());
 
